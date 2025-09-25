@@ -1,0 +1,69 @@
+
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
+---
+<Base>
+  <Header />
+  <Hero />
+
+  <section class="container grid gap-4 md:grid-cols-3 mt-4">
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-2">Co robię</h2>
+      <ul class="list-disc pl-5 space-y-1 text-muted">
+        <li>Lead Generation (CPL/CPA)</li>
+        <li>Google Ads (Search) z intencją „zapytanie/oferta”</li>
+        <li>YouTube & TikTok Ads — krótkie formaty</li>
+        <li>Push/Native — z pre‑landingiem</li>
+        <li>Pre‑landingi i copy pod konwersję</li>
+        <li>Prosty dashboard KPI (EPC, CR, approve)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-2">Branże (na start)</h2>
+      <ul class="list-disc pl-5 space-y-1 text-muted">
+        <li>Motoryzacja — wynajem, finansowanie/leasing</li>
+        <li>Finanse — zapytania i rejestracje (PL/EU)</li>
+        <li>Edukacja / Webinary — zapisy</li>
+        <li>SaaS / VPN — trial / signup</li>
+        <li>Badania / Ankiety — proste rejestracje</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-2">Standardy</h2>
+      <ul class="list-disc pl-5 space-y-1 text-muted">
+        <li>Whitehat only — bez spamu i obietnic „gwarancji”</li>
+        <li>RODO — minimalizacja danych, jasna prywatność</li>
+        <li>Transparentność rozliczeń (CPL/CPA)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container grid gap-4 md:grid-cols-2 mt-4">
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-2">Źródła ruchu (których używam)</h2>
+      <ul class="list-disc pl-5 space-y-1 text-muted">
+        <li>Google Ads (Search)</li>
+        <li>YouTube Ads</li>
+        <li>TikTok Ads</li>
+        <li>Push / Native</li>
+        <li>SEO / Content</li>
+        <li>E‑mail (permission-based)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-2">Proces</h2>
+      <ol class="list-decimal pl-5 space-y-1 text-muted">
+        <li>Plan i KPI — cele, model rozliczeń, budżet</li>
+        <li>Setup — konta, tagi, pre‑landing</li>
+        <li>Start testu — Search + 1–2 kanały wsparcia</li>
+        <li>Optymalizacja — cięcie zbędnych stref/keywordów</li>
+        <li>Raport — EPC, CR, koszt/lead, approve</li>
+      </ol>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

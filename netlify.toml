@@ -1,0 +1,25 @@
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+[[redirects]]
+  from = "http://wajciukmedia.pl/*"
+  to = "https://www.wajciukmedia.pl/:splat"
+  status = 301!
+  force = true
+[[redirects]]
+  from = "https://wajciukmedia.pl/*"
+  to = "https://www.wajciukmedia.pl/:splat"
+  status = 301!
+  force = true
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Любой запрос на apex-домен ведём на www (301), схема не важна
+[[redirects]]
+  from = "/*"
+  to = "https://www.wajciukmedia.pl/:splat"
+  status = 301
+  force = true
+  conditions = { Host = ["wajciukmedia.pl"] }

@@ -1,0 +1,19 @@
+
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+const email = "vaitsiuksv@gmail.com";
+const city = "Warszawa";
+---
+<Base title="Kontakt — Whitehat Lead Gen (PL/EU)">
+  <Header />
+  <section class="container card mt-4">
+    <h1 class="text-2xl font-extrabold mb-2">Kontakt</h1>
+    <p class="text-muted">Najlepiej napisz e‑mail — odpowiadam zwykle tego samego dnia.</p>
+    <p class="mt-2">E‑mail: <a class="link" href={"mailto:" + email}>{email}</a></p>
+    <p>Miasto: {city}</p>
+    <p class="text-sm text-muted mt-2">Uwaga: nie przetwarzam danych osobowych poza komunikacją e‑mail. Wszystkie formularze leadowe są wyłącznie na stronach partnerów.</p>
+  </section>
+  <Footer />
+</Base>
