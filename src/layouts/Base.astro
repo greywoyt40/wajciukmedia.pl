@@ -4,17 +4,26 @@ import "../styles/global.css";
 const { title = "Sergej Wajciuk — Whitehat Lead Gen (PL/EU)", description = "Whitehat lead gen: Google Search, YouTube, TikTok, Push/Native. Pre‑landingi i analityka.", url = "https://www.wajciukmedia.pl" } = Astro.props;
 ---
 <html lang="pl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={url} />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url} />
+
+  <script is:inline data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://emrldco.com/NDYyNTAy.js?t=462502';
+      document.head.appendChild(script);
+    })();
+  </script>
+</head>
   <body>
     <slot />
   </body>
