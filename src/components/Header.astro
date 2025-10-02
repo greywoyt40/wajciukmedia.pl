@@ -1,57 +1,50 @@
+<header class="sticky top-0 z-50 bg-[#0b1422]/90 backdrop-blur-md">
+  <div class="container mx-auto px-4">
+    <div class="flex h-16 items-center">
+      <!-- ЛОГО + ИМЯ -->
+      <a href="/" class="flex items-center gap-3 shrink-0 mr-6">
+        <img src="/assets/logo.svg" alt="Wajciuk Media" class="h-10 w-10 md:h-12 md:w-12" />
+        <div class="leading-tight">
+          <span class="block text-xl font-extrabold">Sergej Wajciuk</span>
+          
+          <span class="block text-[12px] text-white/60">Whitehat Lead Gen — PL/EU</span>
+        </div>
+      </a>
 
----
-const name = "Sergej Wajciuk";
-const tag  = "Whitehat Lead Gen — PL/EU";
-const links = [
-  { href: "/oferta",  label: "Oferta" },
-  { href: "/kontakt", label: "Kontakt" },
-  { href: "/privacy", label: "Prywatność" },
-];
----
-<header class="container py-3">
-  <div class="grid grid-cols-[auto_1fr_auto] items-center gap-3">
-    <a href="/" class="flex items-center gap-3 no-underline min-w-0">
-      <img 
-      src="/assets/logo.svg" 
-      alt={name} 
-      class=""h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 shrink-0"" 
-      />
-      <div class="leading-tight hidden md:block">
-        <div class="font-extrabold tracking-wide text-lg">{name}</div>
-        <div class="text-muted text-sm">{tag}</div>
-      </div>
-    </a>
+      <!-- НАВИГАЦИЯ (ДЕСКТОП) -->
+      <nav class="ml-auto hidden md:flex items-center gap-8">
+        <a href="/oferta/" class="inline-block py-2 text-white/80 hover:text-white">Oferta</a>
+        <a href="/kontakt/" class="inline-block py-2 text-white/80 hover:text-white">Kontakt</a>
+        <a href="/prywatnosc/" class="inline-block py-2 text-white/80 hover:text-white">Prywatność</a>
+      </nav>
 
-    <div class="md:hidden text-center font-extrabold truncate">{name}</div>
+      <!-- БУРГЕР (МОБИЛЬНЫЙ) -->
+      <button
+        id="mnav-btn"
+        class="ml-auto md:hidden inline-flex items-center justify-center rounded-xl p-2 hover:bg-white/5"
+        aria-label="Menu" aria-expanded="false" aria-controls="mnav"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
 
-    <button id="navToggle"
-            class="md:hidden justify-self-end p-2 rounded-lg border border-line"
-            aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-
-    <nav class="hidden md:flex gap-3">
-      {links.map(l => (
-        <a href={l.href} class="px-3 py-2 rounded-lg border border-transparent hover:border-line">{l.label}</a>
-      ))}
-    </nav>
+    <!-- МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mnav" class="md:hidden hidden pb-3">
+      <nav class="flex flex-col gap-2 pt-2 border-t border-white/10">
+        <a href="/oferta/" class="px-1 py-2 text-white/90 hover:text-white">Oferta</a>
+        <a href="/kontakt/" class="px-1 py-2 text-white/90 hover:text-white">Kontakt</a>
+        <a href="/prywatnosc/" class="px-1 py-2 text-white/90 hover:text-white">Prywatność</a>
+      </nav>
+    </div>
   </div>
-
-  <nav id="mobileNav"
-       class="md:hidden hidden w-full mt-3 border border-line rounded-xl p-3 bg-[rgba(16,24,38,.92)]">
-    {links.map(l => (
-      <a href={l.href} class="block px-2 py-2 rounded-lg hover:bg-[rgba(255,255,255,.06)]">{l.label}</a>
-    ))}
-  </nav>
 </header>
 
-<script>
-  const btn = document.getElementById('navToggle');
-  const nav = document.getElementById('mobileNav');
-  btn && btn.addEventListener('click', () => {
-    const hidden = nav.classList.toggle('hidden');
-    btn.setAttribute('aria-expanded', String(!hidden));
+<script is:inline>
+  const b = document.getElementById('mnav-btn');
+  const p = document.getElementById('mnav');
+  b?.addEventListener('click', () => {
+    const open = b.getAttribute('aria-expanded') === 'true';
+    b.setAttribute('aria-expanded', String(!open));
+    p.classList.toggle('hidden');
   });
 </script>
