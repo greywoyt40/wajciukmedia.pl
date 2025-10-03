@@ -12,28 +12,32 @@ const AFF = "WSTAW_TUTAJ_SWOJ_LINK_Z_TRACE?subid={gclid}&utm_source=google&utm_m
 ---
 <Base {title} {description} {url}>
   <main class="bg-[#0b1422] text-white">
-    <!-- HERO -->
-    <section class="container mx-auto px-4 pt-10 pb-8 md:pt-14 md:pb-10">
-      <div class="max-w-3xl">
-        <div class="flex items-start gap-3">
-          <!-- Лёгкая SVG-иконка CV -->
-          <svg aria-hidden="true" class="h-10 w-10 mt-1 text-emerald-400" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-            <line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="2"/>
-            <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
-            <line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2"/>
-          </svg>
+<!-- HERO -->
+<section class="container mx-auto px-4 pt-10 pb-8 md:pt-14 md:pb-10">
+  <div class="max-w-3xl">
+    <!-- Ряд: ИКОНКА + H1 -->
+    <div class="flex items-center gap-4">
+      <!-- БОЛЬШАЯ иконка на мобиле, меньше на десктопе -->
+      <svg aria-hidden="true"
+           class="h-16 w-16 md:h-12 md:w-12 text-emerald-400 flex-shrink-0"
+           viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+        <line x1="8" y1="8"  x2="16" y2="8"  stroke="currentColor" stroke-width="2"/>
+        <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+        <line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2"/>
+      </svg>
 
-          <div>
-            <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
-              Szablon CV 2025 — <span class="text-white/90">szybkie generowanie</span>
-            </h1>
-            <p class="mt-3 text-white/80">
-              Potrzebujesz CV w <strong>PDF/DOC</strong> w kilka minut? Krótka checklista + kreator.
-              Bez spamu i kombinowania — po prostu działaj.
-            </p>
-          </div>
-        </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
+        Szablon CV 2025 — <span class="text-white/90">szybkie generowanie</span>
+      </h1>
+    </div>
+
+    <!-- ОТДЕЛЬНЫЙ абзац НИЖЕ, на всю ширину -->
+    <p class="mt-3 text-white/80">
+      Potrzebujesz CV w <strong>PDF/DOC</strong> w kilka minut? Krótka checklista + kreator.
+      Bez spamu i kombinowania — po prostu działaj.
+    </p>
+
 
         <ul class="mt-5 grid gap-2 text-white/85">
           <li>• Gotowe sekcje: Podsumowanie, Doświadczenie, Edukacja, Umiejętności</li>
