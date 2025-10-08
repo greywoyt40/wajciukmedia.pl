@@ -7,37 +7,39 @@ const description =
   "Szybki kreator CV: PDF/DOC, gotowe sekcje i przykłady. Zrób profesjonalne CV w kilka minut. Klauzula RODO, PL/EN, poprawny układ.";
 const url = "https://www.wajciukmedia.pl/cv/wzor-n-one";
 
-// 🔗 афф-ссылка
-const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=google&utm_medium=search&utm_campaign=cv_pl&utm_term={keyword}&utm_content={adgroupid}";
+// БАЗОВАЯ партнёрская ссылка (стабильная часть).
+// Динамику (gclid/keyword/adgroupid) добавим скриптом ниже.
+const AFF_BASE =
+  "https://trkta.com/?a=539&c=415&s1=google_search_cv&utm_source=google&utm_medium=search&utm_campaign=cv_pl";
 ---
+
 <Base {title} {description} {url}>
   <main class="bg-[#0b1422] text-white">
-<!-- HERO -->
-<section class="container mx-auto px-4 pt-10 pb-8 md:pt-14 md:pb-10">
-  <div class="max-w-3xl">
-    <!-- Ряд: ИКОНКА + H1 -->
-    <div class="flex items-center gap-4">
-      <!-- БОЛЬШАЯ иконка на мобиле, меньше на десктопе -->
-      <svg aria-hidden="true"
-           class="h-16 w-16 md:h-12 md:w-12 text-emerald-400 flex-shrink-0"
-           viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-        <line x1="8" y1="8"  x2="16" y2="8"  stroke="currentColor" stroke-width="2"/>
-        <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
-        <line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2"/>
-      </svg>
+    <!-- HERO -->
+    <section class="container mx-auto px-4 pt-10 pb-8 md:pt-14 md:pb-10">
+      <div class="max-w-3xl">
 
-      <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
-        Szablon CV 2025 — <span class="text-white/90">szybkie generowanie</span>
-      </h1>
-    </div>
+        <!-- ИКОНКА + H1 -->
+        <div class="flex items-center gap-4">
+          <svg aria-hidden="true"
+               class="h-16 w-16 md:h-12 md:w-12 text-emerald-400 flex-shrink-0"
+               viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="8"  x2="16" y2="8"  stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2"/>
+          </svg>
 
-    <!-- ОТДЕЛЬНЫЙ абзац НИЖЕ, на всю ширину -->
-    <p class="mt-3 text-white/80">
-      Potrzebujesz CV w <strong>PDF/DOC</strong> w kilka minut? Krótka checklista + kreator.
-      Bez spamu i kombinowania — po prostu działaj.
-    </p>
+          <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
+            Szablon CV 2025 — <span class="text-white/90">szybkie generowanie</span>
+          </h1>
+        </div>
 
+        <!-- Абзац ниже на всю ширину -->
+        <p class="mt-3 text-white/80">
+          Potrzebujesz CV w <strong>PDF/DOC</strong> w kilka minut? Krótka checklista + kreator.
+          Bez spamu i kombinowania — po prostu działaj.
+        </p>
 
         <ul class="mt-5 grid gap-2 text-white/85">
           <li>• Gotowe sekcje: Podsumowanie, Doświadczenie, Edukacja, Umiejętności</li>
@@ -46,27 +48,26 @@ const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=g
         </ul>
 
         <!-- CTA #1 -->
-        <div class="mt-6">
-          <div class="mt-6 flex md:block justify-center md:justify-start">
-  <a
-    href={AFF}
-    rel="nofollow noopener"
-    class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition"
-  >
-    Utwórz CV w 3 minuty →
-  </a>
-</div>
-          <!-- бейджи-доверия -->
-          <ul class="mt-3 flex flex-wrap gap-2 text-[13px] text-white/70">
-            <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Free preview</li>
-            <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Export PDF/DOC</li>
-            <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Bez spamu</li>
-          </ul>
+        <div class="mt-6 flex md:block justify-center md:justify-start">
+          <a
+            href={AFF_BASE}
+            rel="nofollow noopener"
+            class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition"
+          >
+            Utwórz CV w 3 minuty →
+          </a>
         </div>
+
+        <!-- Бейджи доверия -->
+        <ul class="mt-3 flex flex-wrap gap-2 text-[13px] text-white/70">
+          <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Free preview</li>
+          <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Export PDF/DOC</li>
+          <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Bez spamu</li>
+        </ul>
       </div>
     </section>
 
-    <!-- 3 KROKI -->
+    <!-- 3 КРОКИ -->
     <section class="container mx-auto px-4 pb-10">
       <div class="grid gap-5 md:grid-cols-3">
         <div class="rounded-2xl border border-white/10 p-5">
@@ -82,15 +83,17 @@ const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=g
           <p class="text-white/75">Gotowe do wysyłki — sprawdź druk i polskie znaki.</p>
         </div>
       </div>
+
       <div class="mt-7 text-center">
-        <a href={AFF} rel="nofollow noopener"
-           class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
+        <a href={AFF_BASE}
+           rel="nofollow noopener"
+           class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
           Zacznij teraz →
         </a>
       </div>
     </section>
 
-    <!-- FAQ (кратко) -->
+    <!-- FAQ -->
     <section class="container mx-auto px-4 pb-24 md:pb-28">
       <h2 class="text-2xl font-bold mb-4">FAQ — szybkie odpowiedzi</h2>
       <div class="max-w-3xl space-y-3">
@@ -110,18 +113,47 @@ const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=g
     <!-- Sticky CTA (mobile) -->
     <div class="fixed inset-x-0 bottom-0 z-40 md:hidden">
       <div class="mx-3 mb-3 rounded-2xl bg-emerald-500 shadow-lg">
-        <a href={AFF} rel="nofollow noopener"
-           class="flex items-center justify-center px-4 py-3 text-base font-semibold">
+        <a href={AFF_BASE}
+           rel="nofollow noopener"
+           class="aff flex items-center justify-center px-4 py-3 text-base font-semibold">
           Utwórz CV w 3 minuty →
         </a>
       </div>
     </div>
   </main>
 
+  <!-- JSON-LD -->
   <script is:inline type="application/ld+json">
     {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Czy to jest darmowe?","acceptedAnswer":{"@type":"Answer","text":"Kreator pozwala tworzyć i edytować CV za darmo. Pobranie pliku może wymagać planu — masz podgląd przed decyzją."}},
       {"@type":"Question","name":"PDF czy DOC — co wybrać?","acceptedAnswer":{"@type":"Answer","text":"PDF wygląda tak samo u rekrutera. DOC — do dalszej edycji."}}
     ]}
+  </script>
+
+  <!-- Скрипт: подтягиваем параметры из URL ленда и дописываем их в aff-ссылку -->
+  <script is:inline>
+    (function () {
+      try {
+        const lp = new URL(window.location.href);
+        const gclid = lp.searchParams.get('gclid') || '';
+        // берем keyword из utm_term (или из параметра keyword, если вдруг он есть)
+        const keyword = lp.searchParams.get('utm_term') || lp.searchParams.get('keyword') || '';
+        const adgroupid = lp.searchParams.get('utm_content') || lp.searchParams.get('adgroupid') || '';
+
+        document.querySelectorAll('a.aff').forEach(a => {
+          const u = new URL(a.href);
+          // стабильный ярлык источника уже в s1=google_search_cv
+          if (gclid)    u.searchParams.set('s2', gclid);
+          if (keyword)  u.searchParams.set('s3', keyword);
+          if (adgroupid)u.searchParams.set('s4', adgroupid);
+          // UTM чисто для GA, оставляем
+          if (keyword)  u.searchParams.set('utm_term', keyword);
+          if (adgroupid)u.searchParams.set('utm_content', adgroupid);
+          a.href = u.toString();
+        });
+      } catch (e) {
+        console.warn('AFF link enrich error:', e);
+      }
+    })();
   </script>
 </Base>
