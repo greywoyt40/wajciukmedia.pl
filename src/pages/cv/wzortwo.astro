@@ -4,10 +4,13 @@ import Base from "../../layouts/Base.astro";
 const title = "Wzór CV PDF/DOC — pobierz w 3 minuty | Wajciuk Media";
 const description =
   "Profesjonalne CV w kilka minut: szablony, sekcje, eksport PDF/DOC. Podgląd gratis, aktualna klauzula RODO, PL/EN.";
-const url = "https://www.wajciukmedia.pl/cv/wzor-n-two";
+const url = "https://www.wajciukmedia.pl/cv/wzortwo";
 
-const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=google&utm_medium=search&utm_campaign=cv_pl&utm_term={keyword}&utm_content={adgroupid}";
+// базовая ссылка (динамика прилетит скриптом)
+const AFF_BASE =
+  "https://trkta.com/?a=539&c=415&s1=google_search_cv&utm_source=google&utm_medium=search&utm_campaign=cv_pl";
 ---
+
 <Base {title} {description} {url}>
   <main class="bg-[#0b1422] text-white">
     <!-- HERO -->
@@ -19,23 +22,21 @@ const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=g
         Szybki kreator CV: poprawny układ HR, gotowe sekcje i eksport do PDF/DOC. Podgląd gratis.
       </p>
 
-      <!-- CTA #2 -->
-      <div class="mt-5">
-        <div class="mt-6 flex md:block justify-center md:justify-start">
-          <a href={AFF} rel="nofollow noopener"
-             class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
-            Stwórz CV teraz — PDF/DOC →
-          </a>
+      <div class="mt-6 flex md:block justify-center md:justify-start">
+        <a href={AFF_BASE} rel="nofollow noopener"
+           class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
+          Stwórz CV teraz — PDF/DOC →
+        </a>
       </div>
-        <ul class="mt-3 flex flex-wrap gap-2 text-[13px] text-white/70">
-          <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Podgląd gratis</li>
-          <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">RODO — aktualny zapis</li>
-          <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">PL/EN</li>
-        </ul>
-      </div>
+
+      <ul class="mt-3 flex flex-wrap gap-2 text-[13px] text-white/70">
+        <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Podgląd gratis</li>
+        <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">RODO — aktualny zapis</li>
+        <li class="px-2 py-1 rounded-lg bg-white/5 border border-white/10">PL/EN</li>
+      </ul>
     </section>
 
-    <!-- FAQ ВЫШЕ контента -->
+    <!-- FAQ -->
     <section class="container mx-auto px-4 pb-6 max-w-3xl">
       <div class="space-y-3">
         <details class="rounded-xl border border-white/10 p-4">
@@ -53,7 +54,7 @@ const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=g
       </div>
     </section>
 
-    <!-- 3 KROKI короче -->
+    <!-- 3 KROKI -->
     <section class="container mx-auto px-4 pb-24 md:pb-28">
       <div class="grid gap-5 md:grid-cols-3">
         <div class="rounded-2xl border border-white/10 p-5">
@@ -71,21 +72,43 @@ const AFF = "https://trkta.com/?a=539&c=415&s1={keyword}&s2={gclid}&utm_source=g
       </div>
 
       <div class="mt-6 flex md:block justify-center md:justify-start">
-        <a href={AFF} rel="nofollow noopener"
-           class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
+        <a href={AFF_BASE} rel="nofollow noopener"
+           class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
           Pobierz swoje CV →
         </a>
       </div>
     </section>
 
-    <!-- Sticky CTA (mobile) -->
+    <!-- Sticky CTA -->
     <div class="fixed inset-x-0 bottom-0 z-40 md:hidden">
       <div class="mx-3 mb-3 rounded-2xl bg-emerald-500 shadow-lg">
-        <a href={AFF} rel="nofollow noopener"
-           class="flex items-center justify-center px-4 py-3 text-base font-semibold">
+        <a href={AFF_BASE} rel="nofollow noopener"
+           class="aff flex items-center justify-center px-4 py-3 text-base font-semibold">
           Stwórz CV teraz →
         </a>
       </div>
     </div>
   </main>
+
+  <!-- динамика субидов -->
+  <script is:inline>
+    (function () {
+      try {
+        const q = new URL(location.href).searchParams;
+        const gclid = q.get('gclid') || '';
+        const keyword = q.get('utm_term') || q.get('keyword') || '';
+        const adgroupid = q.get('utm_content') || q.get('adgroupid') || '';
+
+        document.querySelectorAll('a.aff').forEach(a => {
+          const u = new URL(a.href);
+          if (gclid)     u.searchParams.set('s2', gclid);
+          if (keyword)   u.searchParams.set('s3', keyword);
+          if (adgroupid) u.searchParams.set('s4', adgroupid);
+          if (keyword)   u.searchParams.set('utm_term', keyword);
+          if (adgroupid) u.searchParams.set('utm_content', adgroupid);
+          a.href = u.toString();
+        });
+      } catch (e) { console.warn(e); }
+    })();
+  </script>
 </Base>
