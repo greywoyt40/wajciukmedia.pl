@@ -11,6 +11,10 @@ const url = "https://www.wajciukmedia.pl/cv/wzor-n-one";
 // Динамику (gclid/keyword/adgroupid) добавим скриптом ниже.
 const AFF_BASE =
   "https://trkta.com/?a=539&c=415&s1=google_search_cv&utm_source=google&utm_medium=search&utm_campaign=cv_pl";
+
+// A/B: ?v=A|B (default A)
+const v = (Astro.url.searchParams.get('v') || 'A').toUpperCase();
+const BTN_LABEL = v === 'B' ? 'Zacznij tworzyć CV online' : 'Pobierz wzór CV PDF/DOC';
 ---
 
 <Base {title} {description} {url}>
@@ -52,9 +56,11 @@ const AFF_BASE =
           <a
             href={AFF_BASE}
             rel="nofollow noopener"
-            class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition"
+            class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+            aria-label={BTN_LABEL}
+            data-ab-variant={v}
           >
-            Utwórz CV w 3 minuty →
+            {BTN_LABEL} →
           </a>
         </div>
 
@@ -87,8 +93,10 @@ const AFF_BASE =
       <div class="mt-7 text-center">
         <a href={AFF_BASE}
            rel="nofollow noopener"
-           class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition">
-          Zacznij teraz →
+           class="aff inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-lg font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+           aria-label={BTN_LABEL}
+           data-ab-variant={v}>
+          {BTN_LABEL} →
         </a>
       </div>
     </section>
@@ -115,8 +123,10 @@ const AFF_BASE =
       <div class="mx-3 mb-3 rounded-2xl bg-emerald-500 shadow-lg">
         <a href={AFF_BASE}
            rel="nofollow noopener"
-           class="aff flex items-center justify-center px-4 py-3 text-base font-semibold">
-          Utwórz CV w 3 minuty →
+           class="aff flex items-center justify-center px-4 py-3 text-base font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+           aria-label={BTN_LABEL}
+           data-ab-variant={v}>
+          {BTN_LABEL} →
         </a>
       </div>
     </div>
@@ -130,7 +140,7 @@ const AFF_BASE =
     ]}
   </script>
 
-  <!-- Скрипт: подтягиваем параметры из URL ленда и дописываем их в aff-ссылку -->
+  <!-- Скрипт: подтягиваем параметры из URL ленда i dopisujemy je w aff-ссылку -->
   <script is:inline>
     (function () {
       try {
@@ -142,7 +152,7 @@ const AFF_BASE =
 
         document.querySelectorAll('a.aff').forEach(a => {
           const u = new URL(a.href);
-          // стабильный ярлык источника уже в s1=google_search_cv
+          // стабильный ярлык источnika już w s1=google_search_cv
           if (gclid)    u.searchParams.set('s2', gclid);
           if (keyword)  u.searchParams.set('s3', keyword);
           if (adgroupid)u.searchParams.set('s4', adgroupid);
