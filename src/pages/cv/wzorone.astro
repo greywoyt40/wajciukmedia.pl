@@ -140,25 +140,35 @@ const BTN_LABEL = v === 'B' ? 'Zacznij tworzyć CV online' : 'Pobierz wzór CV P
     ]}
   </script>
 
-  <!-- Скрипт: подтягиваем параметры из URL ленда i dopisujemy je w aff-ссылку -->
+  <!-- Скрипт: подтягиваем параметры ленда и дописываем их в aff-ссылку -->
   <script is:inline>
     (function () {
       try {
         const lp = new URL(window.location.href);
         const gclid = lp.searchParams.get('gclid') || '';
-        // берем keyword из utm_term (или из параметра keyword, если вдруг он есть)
+        // keyword из utm_term (или keyword)
         const keyword = lp.searchParams.get('utm_term') || lp.searchParams.get('keyword') || '';
         const adgroupid = lp.searchParams.get('utm_content') || lp.searchParams.get('adgroupid') || '';
+        // A/B variant из URL (?v=A|B), по умолчанию A
+        const vParam = (lp.searchParams.get('v') || 'A').toUpperCase();
 
         document.querySelectorAll('a.aff').forEach(a => {
           const u = new URL(a.href);
-          // стабильный ярлык источnika już w s1=google_search_cv
+          // Берём вариант из data-атрибута, если есть, иначе из URL
+          const ab = ((a.getAttribute('data-ab-variant') || vParam) === 'B') ? 'B' : 'A';
+
+          // стабильный ярлык источника уже в s1=google_search_cv
           if (gclid)    u.searchParams.set('s2', gclid);
           if (keyword)  u.searchParams.set('s3', keyword);
           if (adgroupid)u.searchParams.set('s4', adgroupid);
-          // UTM чисто для GA, оставляем
+
+          // UTM чисто для GA
           if (keyword)  u.searchParams.set('utm_term', keyword);
           if (adgroupid)u.searchParams.set('utm_content', adgroupid);
+
+          // UTM метка варианта A/B
+          u.searchParams.set('utm_ab', ab);
+
           a.href = u.toString();
         });
       } catch (e) {
