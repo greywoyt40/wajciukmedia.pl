@@ -1,44 +1,65 @@
-
 ---
 import "../styles/global.css";
-const { title = "Sergej Wajciuk — Whitehat Lead Gen (PL/EU)", description = "Whitehat lead gen: Google Search, YouTube, TikTok, Push/Native. Pre‑landingi i analityka.", url = "https://www.wajciukmedia.pl" } = Astro.props;
----
-<html lang="pl">
-<head>
-<meta name="verify-admitad" content="912b1a6944" />
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TC968ZQZ');</script>
-<!-- End Google Tag Manager -->
-  
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={url} />
-  
 
-  <script is:inline data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-    (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://emrldco.com/NDYyNTAy.js?t=462502';
-      document.head.appendChild(script);
-    })();
-  </script>
-</head>
-  <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC968ZQZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+export interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Sergej Wajciuk — Whitehat Lead Gen (PL/EU)",
+  description = "Whitehat lead gen: Google Search, YouTube, TikTok, Push/Native. Pre-landingi i analityka.",
+  url = "https://www.wajciukmedia.pl",
+  noindex = false
+} = Astro.props;
+
+const canonical = new URL(Astro.url, Astro.site ?? url).toString();
+---
+
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Admitad verify (по требованию сети) -->
+    <meta name="verify-admitad" content="912b1a6944" />
+
+    <!-- Google Tag Manager — ВСТАВЛЯЕМ ТОЛЬКО ЭТО (НЕ gtag.js) -->
+    <script is:inline>{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TC968ZQZ');`}</script>
+    <!-- End Google Tag Manager -->
+  </head>
+
+  <body class="min-h-dvh bg-white text-gray-900 antialiased">
+    <!-- Google Tag Manager (noscript) — строго сразу после <body> -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC968ZQZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <slot />
+
+    <!-- Место для сторонних скриптов (если нужно). Загружать внизу, не в <head>. -->
+    <!--
+    <script is:inline>
+      // пример загрузки внешнего скрипта
+      (function(){var s=document.createElement('script');s.async=1;s.src='https://example.com/file.js';document.body.appendChild(s);}());
+    </script>
+    -->
   </body>
 </html>
