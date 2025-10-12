@@ -34,17 +34,17 @@ const canonical = new URL(Astro.url, Astro.site ?? url).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
 
-    <!-- Admitad verify (по требованию сети) -->
+    <!-- Admitad verify -->
     <meta name="verify-admitad" content="912b1a6944" />
 
-    
     <!-- Google Tag Manager — ТОЛЬКО GTM (НЕ gtag.js) -->
-     <script is:inline>
-       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-       })(window,document,'script','dataLayer','GTM-TC968ZQZ');
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TC968ZQZ');
+    </script>
     <!-- End Google Tag Manager -->
   </head>
 
@@ -59,7 +59,6 @@ const canonical = new URL(Astro.url, Astro.site ?? url).toString();
     <!-- Место для сторонних скриптов (если нужно). Загружать внизу, не в <head>. -->
     <!--
     <script is:inline>
-      // пример загрузки внешнего скрипта
       (function(){var s=document.createElement('script');s.async=1;s.src='https://example.com/file.js';document.body.appendChild(s);}());
     </script>
     -->
