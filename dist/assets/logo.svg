@@ -1,0 +1,18 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-label="Sergej Wajciuk — SW">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0,8)">
+    <rect x="0" y="0" width="60" height="60" rx="14" fill="url(#g)"/>
+    <path d="M18 24c0-5 5-9 12-9h5c6 0 11 3 11 8 0 3-2 6-7 7l-9 2c-4 1-6 3-6 5 0 3 3 5 7 5h6c3 0 5-1 6-3l5 3c-3 4-7 6-13 6h-5c-8 0-14-4-14-11 0-6 4-10 11-11l9-2c3-1 4-2 4-4 0-2-2-3-5-3h-5c-3 0-5 1-6 3z" fill="#0B1220" opacity=".95"/>
+    <path d="M38 18l5 18 5-10 5 10 5-18h6l-8 24h-6l-4-8-4 8h-6l-8-24z" fill="#0B1220" opacity=".95" transform="translate(-6,0)"/>
+  </g>
+  <g transform="translate(74,20)" fill="#E7EDF7">
+    <text x="0" y="20" font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="22">Sergej Wajciuk</text>
+    <text x="0" y="38" font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="500" font-size="13" fill="#9FB0C7">Whitehat Lead Gen — PL/EU</text>
+  </g>
+</svg>

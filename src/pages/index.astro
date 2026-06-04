@@ -1,69 +1,222 @@
-
 ---
 import Base from "../layouts/Base.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import Footer from "../components/Footer.astro";
+
+const email = "vaitsiuksv@gmail.com";
+const whatsapp = "513 233 439";
+const mailto = `mailto:${email}`;
+const whatsappLink = "https://wa.me/48513233439";
+
+const services = [
+  ["fa-brands fa-google", "Google Ads / intencja", "Kampanie pod zapytania i potrzeby użytkownika — bez przypadkowego ruchu."],
+  ["fa-brands fa-youtube", "YouTube & short-form", "Krótkie formaty prowadzące do pre-landingu, a nie tylko do pustych kliknięć."],
+  ["fa-solid fa-filter", "Pre-landingi i lejki", "Proste strony, które kwalifikują ruch i odsiewają słabe leady."],
+  ["fa-solid fa-users", "Lead generation", "Modele CPL/CPA/hybrid z naciskiem na jakość, tracking i zgodność."],
+  ["fa-solid fa-chart-line", "KPI i raportowanie", "EPC, CR, approve rate, koszt leada i decyzje oparte na danych."],
+  ["fa-solid fa-shield-halved", "Whitehat only", "Bez spamu, cloakingu i obietnic, których nie da się dowieźć."]
+];
+
+const process = [
+  ["fa-solid fa-magnifying-glass", "Analiza oferty", "Sprawdzam produkt, odbiorcę, model rozliczeń i realny potencjał testu."],
+  ["fa-solid fa-clipboard-list", "Plan testu", "Dobieram źródła ruchu, pre-landing, KPI i bezpieczny budżet startowy."],
+  ["fa-regular fa-window-restore", "Setup", "Przygotowuję kampanie, strukturę linków, UTM/subID i podstawowy tracking."],
+  ["fa-solid fa-bullseye", "Optymalizacja", "Wycinam słabe segmenty i zostawiam ruch z sensem biznesowym."],
+  ["fa-solid fa-arrow-trend-up", "Skalowanie", "Rozwijam to, co działa, bez niszczenia jakości leadów."]
+];
+
+const traffic = [
+  ["fa-brands fa-google", "Google Ads", "Search / intencja"],
+  ["fa-brands fa-youtube", "YouTube Ads", "Video"],
+  ["fa-brands fa-tiktok", "TikTok Ads", "Short-form"],
+  ["fa-solid fa-bolt", "Push / Native", "Tylko z pre-landingiem"],
+  ["fa-regular fa-envelope", "E-mail", "Permission-based"],
+  ["fa-solid fa-magnifying-glass", "SEO / Content", "Artykuły i lejki"]
+];
+
+const industries = [
+  ["fa-solid fa-building-columns", "Finanse"],
+  ["fa-solid fa-car-side", "Motoryzacja"],
+  ["fa-solid fa-graduation-cap", "Edukacja"],
+  ["fa-solid fa-laptop-code", "SaaS / VPN"],
+  ["fa-solid fa-clipboard-check", "Badania"],
+  ["fa-solid fa-shield-halved", "Ubezpieczenia"],
+  ["fa-solid fa-plane-departure", "Travel"],
+  ["fa-solid fa-cart-shopping", "E-commerce"]
+];
 ---
 <Base>
-  <Header />
-  <Hero />
+  <main class="page">
+    <section class="hero-screen" id="top" aria-label="Whitehat lead generation">
+      <div class="hero-overlay"></div>
+      <header class="hero-header" aria-label="Główne menu">
+        <a class="site-logo" href="#top" aria-label="Sergej Wajciuk — strona główna">
+          <img src="/assets/logo-wajciuk-pro-thin.png" alt="Sergej Wajciuk Performance Marketing" />
+        </a>
+        <nav class="main-nav" aria-label="Nawigacja">
+          <a href="#uslugi">O mnie</a>
+          <a href="#uslugi">Usługi</a>
+          <a href="#proces">Proces</a>
+          <a href="#branze">Branże</a>
+          <a href="#wyniki">Wyniki</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <a class="nav-cta" href={mailto}>Napisz wiadomość</a>
+      </header>
 
-  <section class="container grid gap-4 md:grid-cols-3 mt-4">
-    <div class="card">
-      <h2 class="text-xl font-semibold mb-2">Co robię</h2>
-      <ul class="list-disc pl-5 space-y-1 text-muted">
-        <li>Lead Generation (CPL/CPA)</li>
-        <li>Google Ads (Search) z intencją „zapytanie/oferta”</li>
-        <li>YouTube & TikTok Ads — krótkie formaty</li>
-        <li>Push/Native — z pre‑landingiem</li>
-        <li>Pre‑landingi i copy pod konwersję</li>
-        <li>Prosty dashboard KPI (EPC, CR, approve)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h2 class="text-xl font-semibold mb-2">Branże (na start)</h2>
-      <ul class="list-disc pl-5 space-y-1 text-muted">
-        <li>Motoryzacja — wynajem, finansowanie/leasing</li>
-        <li>Finanse — zapytania i rejestracje (PL/EU)</li>
-        <li>Edukacja / Webinary — zapisy</li>
-        <li>SaaS / VPN — trial / signup</li>
-        <li>Badania / Ankiety — proste rejestracje</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h2 class="text-xl font-semibold mb-2">Standardy</h2>
-      <ul class="list-disc pl-5 space-y-1 text-muted">
-        <li>Whitehat only — bez spamu i obietnic „gwarancji”</li>
-        <li>RODO — minimalizacja danych, jasna prywatność</li>
-        <li>Transparentność rozliczeń (CPL/CPA)</li>
-      </ul>
-    </div>
-  </section>
+      <div class="hero-content">
+        <div class="hero-hoodie-text" aria-hidden="true">
+          <span>Performance</span>
+          <strong>Makes<br />Profit</strong>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Whitehat Lead Gen</p>
+          <h1>Whitehat lead gen,<span>które dowozi leady.</span></h1>
+          <p class="hero-text">Prowadzę kampanie leadowe w modelach CPL/CPA. Intencja użytkownika, pre-landingi, jasny tracking i pełna kontrola kosztu leada.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href={mailto}><i class="fa-solid fa-paper-plane btn-icon" aria-hidden="true"></i>Napisz wiadomość</a>
+            <a class="btn btn-ghost" href="#proces"><i class="fa-solid fa-play btn-icon" aria-hidden="true"></i>Zobacz jak pracuję</a>
+          </div>
+          <div class="hero-trust">
+            <div><i class="fa-solid fa-shield-halved trust-icon" aria-hidden="true"></i><span><strong>Whitehat only</strong><small>Bez spamu i cloakingu</small></span></div>
+            <div><i class="fa-solid fa-lock trust-icon" aria-hidden="true"></i><span><strong>Jasne zasady</strong><small>RODO i compliance</small></span></div>
+            <div><i class="fa-solid fa-bullseye trust-icon" aria-hidden="true"></i><span><strong>Pełny tracking</strong><small>EPC, CR, approve rate</small></span></div>
+            <div><i class="fa-solid fa-chart-simple trust-icon" aria-hidden="true"></i><span><strong>Transparentność</strong><small>Stałe raporty i KPI</small></span></div>
+          </div>
+        </div>
+      </div>
 
-  <section class="container grid gap-4 md:grid-cols-2 mt-4">
-    <div class="card">
-      <h2 class="text-xl font-semibold mb-2">Źródła ruchu (których używam)</h2>
-      <ul class="list-disc pl-5 space-y-1 text-muted">
-        <li>Google Ads (Search)</li>
-        <li>YouTube Ads</li>
-        <li>TikTok Ads</li>
-        <li>Push / Native</li>
-        <li>SEO / Content</li>
-        <li>E‑mail (permission-based)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h2 class="text-xl font-semibold mb-2">Proces</h2>
-      <ol class="list-decimal pl-5 space-y-1 text-muted">
-        <li>Plan i KPI — cele, model rozliczeń, budżet</li>
-        <li>Setup — konta, tagi, pre‑landing</li>
-        <li>Start testu — Search + 1–2 kanały wsparcia</li>
-        <li>Optymalizacja — cięcie zbędnych stref/keywordów</li>
-        <li>Raport — EPC, CR, koszt/lead, approve</li>
-      </ol>
-    </div>
-  </section>
+      <div class="hero-metrics" aria-label="Zakres pracy">
+        <article>
+          <span>Specjalizacja</span>
+          <strong>Lead generation CPL/CPA</strong>
+        </article>
+        <article>
+          <i class="fa-solid fa-users metric-icon" aria-hidden="true"></i>
+          <strong>Leady</strong>
+          <small>jakość zamiast ilości</small>
+        </article>
+        <article>
+          <i class="fa-solid fa-bullseye metric-icon" aria-hidden="true"></i>
+          <strong>Koszt / lead</strong>
+          <small>kontrola budżetu</small>
+        </article>
+        <article>
+          <i class="fa-solid fa-chart-line metric-icon" aria-hidden="true"></i>
+          <strong>Tracking</strong>
+          <small>EPC / CR / approve</small>
+        </article>
+        <article>
+          <i class="fa-solid fa-arrow-trend-up metric-icon" aria-hidden="true"></i>
+          <strong>Wynik</strong>
+          <small>optymalizacja lejka</small>
+        </article>
+      </div>
+    </section>
 
-  <Footer />
+    <section class="section light" id="uslugi">
+      <div class="container">
+        <h2>W czym mogę Ci pomóc?</h2>
+        <div class="cards service-grid">
+          {services.map(([iconName, title, text]) => (
+            <article class="card service-card">
+              <i class={`${iconName} card-icon`} aria-hidden="true"></i>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="wyniki">
+      <div class="container split-results">
+        <div>
+          <p class="kicker">Bez fikcyjnych liczb</p>
+          <h2>Najpierw kontrola jakości, potem skalowanie.</h2>
+          <p>Nie pokazuję przypadkowych wyników jako case study. W pracy liczy się model testu, jakość leadów, tracking i realny koszt pozyskania.</p>
+        </div>
+        <div class="result-cards">
+          <article><strong>Leady</strong><span>jakość zamiast pustej ilości</span></article>
+          <article><strong>Koszt / lead</strong><span>kontrola budżetu</span></article>
+          <article><strong>Tracking</strong><span>subID, UTM, EPC, CR</span></article>
+          <article><strong>Approve rate</strong><span>ocena po finalnym wyniku</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="proces">
+      <div class="container">
+        <h2>Jak wygląda współpraca?</h2>
+        <div class="process-grid">
+          {process.map(([iconName, title, text], index) => (
+            <article class="step">
+              <span class="number">{String(index + 1).padStart(2, "0")}</span>
+              <i class={`${iconName} card-icon`} aria-hidden="true"></i>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="traffic-band">
+      <div class="container traffic-grid">
+        <h2>Źródła ruchu</h2>
+        {traffic.map(([iconName, title, text]) => (
+          <div class="traffic-item">
+            <i class={`${iconName} item-icon`} aria-hidden="true"></i>
+            <span><strong>{title}</strong><small>{text}</small></span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section light" id="branze">
+      <div class="container industries-wrap">
+        <div class="industries-copy">
+          <h2>Pracuję z ofertami z wielu branż</h2>
+          <p>Dopasowuję strategię do produktu, źródła ruchu i grupy docelowej.</p>
+        </div>
+        <div class="industry-grid">
+          {industries.map(([iconName, title]) => (
+            <article class="industry-card"><i class={`${iconName} industry-icon`} aria-hidden="true"></i><strong>{title}</strong></article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="kontakt">
+      <div class="container cta-box">
+        <div class="cta-visual" aria-hidden="true">
+          <i class="fa-solid fa-paper-plane"></i>
+        </div>
+        <div class="cta-copy">
+          <h2>Chcesz więcej leadów w niższym koszcie?</h2>
+          <p>Napisz do mnie. Sprawdzę ofertę, możliwe źródła ruchu i sensowny plan pierwszego testu.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact-card" href={mailto}>
+            <i class="fa-regular fa-envelope contact-icon" aria-hidden="true"></i>
+            <span><small>E-mail</small><strong>{email}</strong></span>
+          </a>
+          <a class="contact-card" href={whatsappLink}>
+            <i class="fa-brands fa-whatsapp contact-icon" aria-hidden="true"></i>
+            <span><small>WhatsApp</small><strong>{whatsapp}</strong></span>
+          </a>
+          <a class="btn btn-primary" href={mailto}>Napisz wiadomość</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© 2025 Sergej Wajciuk</span>
+        <nav>
+          <a href="/polityka-prywatnosci/">Polityka prywatności</a>
+          <a href="/linki-partnerskie/">Linki partnerskie</a>
+          <a href="/polityka-cookies/">Polityka cookies</a>
+        </nav>
+      </div>
+    </footer>
+  </main>
 </Base>

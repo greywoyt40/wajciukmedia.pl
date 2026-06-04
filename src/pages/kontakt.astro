@@ -1,19 +1,11 @@
-
 ---
 import Base from "../layouts/Base.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 const email = "vaitsiuksv@gmail.com";
-const city = "Warszawa";
+const whatsapp = "513 233 439";
 ---
-<Base title="Kontakt — Whitehat Lead Gen (PL/EU)">
-  <Header />
-  <section class="container card mt-4">
-    <h1 class="text-2xl font-extrabold mb-2">Kontakt</h1>
-    <p class="text-muted">Najlepiej napisz e‑mail — odpowiadam zwykle tego samego dnia.</p>
-    <p class="mt-2">E‑mail: <a class="link" href={"mailto:" + email}>{email}</a></p>
-    <p>Miasto: {city}</p>
-    <p class="text-sm text-muted mt-2">Uwaga: nie przetwarzam danych osobowych poza komunikacją e‑mail. Wszystkie formularze leadowe są wyłącznie na stronach partnerów.</p>
-  </section>
-  <Footer />
+<Base title="Kontakt — Sergej Wajciuk" description="Kontakt: Sergej Wajciuk, performance marketing i lead generation CPL/CPA.">
+  <main class="legal-page">
+    <header class="site-header"><div class="container header-inner"><a class="brand" href="/"><span class="sw-logo">SW</span><span><span class="brand-name">Sergej Wajciuk</span><span class="brand-sub">Performance Marketing</span></span></a><a class="header-cta" href={`mailto:${email}`}>Napisz wiadomość</a></div></header>
+    <section class="legal-hero"><div class="container legal-card"><h1>Kontakt</h1><p>Napisz, jeżeli chcesz omówić ofertę, źródła ruchu, pre-landing lub setup trackingowy.</p><h2>E-mail</h2><p><a href={`mailto:${email}`}>{email}</a></p><h2>WhatsApp</h2><p><a href={`https://wa.me/48${whatsapp.replaceAll(' ', '')}`}>{whatsapp}</a></p></div></section>
+  </main>
 </Base>

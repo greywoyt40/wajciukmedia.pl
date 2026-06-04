@@ -9,16 +9,16 @@ export interface Props {
 }
 
 const {
-  title = "Sergej Wajciuk — Whitehat Lead Gen (PL/EU)",
-  description = "Whitehat lead gen: Google Search, YouTube, TikTok, Push/Native. Pre-landingi i analityka.",
+  title = "Sergej Wajciuk — Whitehat Lead Generation CPL/CPA",
+  description = "Whitehat lead generation: kampanie CPL/CPA, pre-landingi, tracking, YouTube, TikTok i transparentna optymalizacja kosztu leada.",
   url = "https://www.wajciukmedia.pl",
   noindex = false
 } = Astro.props;
 
 const canonical = new URL(Astro.url, Astro.site ?? url).toString();
+const ogImage = new URL("/assets/og-wajciukmedia.webp", Astro.site ?? url).toString();
 ---
-
-<html lang="pl" class="scroll-smooth">
+<html lang="pl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,18 +26,22 @@ const canonical = new URL(Astro.url, Astro.site ?? url).toString();
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-
-    <!-- Open Graph -->
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-
-    <!-- Admitad verify -->
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="verify-admitad" content="912b1a6944" />
-
-    <!-- Google Tag Manager — ТОЛЬКО GTM (НЕ gtag.js) -->
+    <!-- Google Tag Manager — zachowany z poprzedniej wersji -->
     <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -45,22 +49,9 @@ const canonical = new URL(Astro.url, Astro.site ?? url).toString();
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','G-Q3N3TKQ3ZZ');
     </script>
-    <!-- End Google Tag Manager -->
   </head>
-
-  <body class="min-h-dvh bg-white text-gray-900 antialiased">
-    <!-- Google Tag Manager (noscript) — строго сразу после <body> -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-Q3N3TKQ3ZZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-Q3N3TKQ3ZZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <slot />
-
-    <!-- Место для сторонних скриптов (если нужно). Загружать внизу, не в <head>. -->
-    <!--
-    <script is:inline>
-      (function(){var s=document.createElement('script');s.async=1;s.src='https://example.com/file.js';document.body.appendChild(s);}());
-    </script>
-    -->
   </body>
 </html>
