@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Sergej Wajciuk — Whitehat Lead Generation CPL/CPA",
+  description = "Whitehat lead generation: kampanie CPL/CPA, pre-landingi, tracking, YouTube, TikTok i transparentna optymalizacja kosztu leada.",
+  url = "https://www.wajciukmedia.pl",
+  noindex = false
+} = Astro.props;
+
+const canonical = new URL(Astro.url, Astro.site ?? url).toString();
+const ogImage = new URL("/assets/og-wajciukmedia.webp", Astro.site ?? url).toString();
+---
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="verify-admitad" content="912b1a6944" />
+    <!-- Google Tag Manager — zachowany z poprzedniej wersji -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','G-Q3N3TKQ3ZZ');
+    </script>
+  </head>
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-Q3N3TKQ3ZZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <slot />
+  </body>
+</html>
