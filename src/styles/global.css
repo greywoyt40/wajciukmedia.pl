@@ -383,3 +383,23 @@ img{max-width:100%;display:block}
 @media (max-width:520px){
   .site-logo img{width:154px !important;}
 }
+
+/* Logo height adjustment: SW mark visual height reduced */
+.site-logo img{
+  height:55px !important;
+  width:auto !important;
+  max-width:none !important;
+  object-fit:contain;
+}
+@media (max-width:820px){
+  .site-logo img{
+    height:48px !important;
+    width:auto !important;
+  }
+}
+@media (max-width:520px){
+  .site-logo img{
+    height:42px !important;
+    width:auto !important;
+  }
+}
