@@ -1,0 +1,30 @@
+<script is:inline>
+  (function () {
+    function cleanUrl(value) {
+      try {
+        const url = new URL(value, window.location.href);
+        return url.hostname + url.pathname;
+      } catch (error) {
+        return value;
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const link = target.closest('a[data-affiliate-program]');
+      if (!(link instanceof HTMLAnchorElement)) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'affiliate_click',
+        affiliate_program: link.dataset.affiliateProgram || 'unknown',
+        affiliate_network: link.dataset.affiliateNetwork || 'unknown',
+        affiliate_cta: link.dataset.affiliateCta || 'unknown',
+        affiliate_segment: link.dataset.affiliateSegment || 'unknown',
+        affiliate_url: cleanUrl(link.href),
+        page_path: window.location.pathname
+      });
+    });
+  })();
+</script>

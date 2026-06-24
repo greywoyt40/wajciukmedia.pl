@@ -1,0 +1,304 @@
+<div class="wm-cookie-banner" id="wm-cookie-banner" hidden>
+  <div class="wm-cookie-card" role="dialog" aria-modal="false" aria-labelledby="wm-cookie-title">
+    <div class="wm-cookie-copy">
+      <p class="wm-cookie-kicker">Prywatność i pomiar</p>
+      <h2 id="wm-cookie-title">Ustawienia cookies</h2>
+      <p>
+        Używamy niezbędnych technologii do działania strony. Analityka i pomiar reklamowy pomagają sprawdzić,
+        które sekcje i linki partnerskie są użyteczne. Możesz zaakceptować wszystko, odrzucić albo wybrać ustawienia.
+      </p>
+      <a href="/polityka-cookies/">Polityka cookies</a>
+    </div>
+
+    <div class="wm-cookie-settings" id="wm-cookie-settings" hidden>
+      <label class="wm-cookie-option">
+        <input type="checkbox" id="wm-consent-analytics" checked />
+        <span>
+          <strong>Analityka</strong>
+          <small>Pomiar wyświetleń, przewinięć i jakości strony.</small>
+        </span>
+      </label>
+      <label class="wm-cookie-option">
+        <input type="checkbox" id="wm-consent-marketing" checked />
+        <span>
+          <strong>Marketing</strong>
+          <small>Pomiar kliknięć reklamowych i linków partnerskich.</small>
+        </span>
+      </label>
+    </div>
+
+    <div class="wm-cookie-actions">
+      <button type="button" class="wm-cookie-btn wm-cookie-btn-ghost" data-cookie-action="reject">Odrzuć</button>
+      <button type="button" class="wm-cookie-btn wm-cookie-btn-ghost" data-cookie-action="settings">Ustawienia</button>
+      <button type="button" class="wm-cookie-btn wm-cookie-btn-primary" data-cookie-action="accept">Akceptuję wszystko</button>
+      <button type="button" class="wm-cookie-btn wm-cookie-btn-primary" data-cookie-action="save" hidden>Zapisz wybór</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wm-cookie-banner {
+    position: fixed;
+    inset: auto 16px 16px 16px;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    color: #0f172a;
+  }
+
+  .wm-cookie-banner[hidden],
+  .wm-cookie-settings[hidden],
+  .wm-cookie-btn[hidden] {
+    display: none !important;
+  }
+
+  .wm-cookie-card {
+    width: min(960px, 100%);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: end;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+    padding: 20px;
+    backdrop-filter: blur(14px);
+  }
+
+  .wm-cookie-copy h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .wm-cookie-copy p {
+    margin: 0;
+    max-width: 720px;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .wm-cookie-copy a {
+    display: inline-flex;
+    margin-top: 10px;
+    color: #047857;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .wm-cookie-kicker {
+    margin: 0 0 4px !important;
+    color: #047857 !important;
+    font-size: 12px !important;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .wm-cookie-settings {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 10px;
+    padding-top: 2px;
+  }
+
+  .wm-cookie-option {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    padding: 12px;
+    background: #f8fafc;
+  }
+
+  .wm-cookie-option input {
+    margin-top: 3px;
+    accent-color: #047857;
+  }
+
+  .wm-cookie-option strong {
+    display: block;
+    font-size: 14px;
+  }
+
+  .wm-cookie-option small {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .wm-cookie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .wm-cookie-btn {
+    min-height: 42px;
+    cursor: pointer;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    padding: 10px 16px;
+    font-weight: 800;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .wm-cookie-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .wm-cookie-btn-primary {
+    border-color: #047857;
+    background: #047857;
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(4, 120, 87, 0.28);
+  }
+
+  .wm-cookie-btn-ghost {
+    background: #fff;
+    color: #0f172a;
+  }
+
+  @media (max-width: 760px) {
+    .wm-cookie-banner {
+      inset: auto 10px 10px 10px;
+    }
+
+    .wm-cookie-card {
+      grid-template-columns: 1fr;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .wm-cookie-actions {
+      justify-content: stretch;
+    }
+
+    .wm-cookie-btn {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const STORAGE_KEY = 'wm_cookie_consent_v1';
+    const banner = document.getElementById('wm-cookie-banner');
+    const settings = document.getElementById('wm-cookie-settings');
+    const analyticsInput = document.getElementById('wm-consent-analytics');
+    const marketingInput = document.getElementById('wm-consent-marketing');
+    const settingsButton = document.querySelector('[data-cookie-action="settings"]');
+    const saveButton = document.querySelector('[data-cookie-action="save"]');
+
+    function pushConsent(consent) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+
+      const analyticsGranted = consent.analytics === true;
+      const marketingGranted = consent.marketing === true;
+
+      window.gtag('consent', 'update', {
+        analytics_storage: analyticsGranted ? 'granted' : 'denied',
+        ad_storage: marketingGranted ? 'granted' : 'denied',
+        ad_user_data: marketingGranted ? 'granted' : 'denied',
+        ad_personalization: marketingGranted ? 'granted' : 'denied'
+      });
+
+      window.dataLayer.push({
+        event: 'cookie_consent_update',
+        consent_analytics: analyticsGranted ? 'granted' : 'denied',
+        consent_marketing: marketingGranted ? 'granted' : 'denied'
+      });
+    }
+
+    function saveConsent(consent) {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          version: 1,
+          analytics: consent.analytics === true,
+          marketing: consent.marketing === true,
+          updatedAt: new Date().toISOString()
+        }));
+      } catch (error) {
+        // localStorage can be blocked; consent update still runs for this page view.
+      }
+      try {
+        pushConsent(consent);
+      } catch (error) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'cookie_consent_error' });
+      }
+      if (banner) {
+        banner.hidden = true;
+        banner.setAttribute('hidden', '');
+        banner.style.display = 'none';
+      }
+    }
+
+    function readConsent() {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    const saved = readConsent();
+    if (saved) {
+      pushConsent(saved);
+      return;
+    }
+
+    if (banner) {
+      banner.hidden = false;
+      banner.removeAttribute('hidden');
+      banner.style.removeProperty('display');
+    }
+
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+      const button = target.closest('[data-cookie-action]');
+      if (!(button instanceof HTMLElement)) return;
+
+      event.preventDefault();
+      const action = button.getAttribute('data-cookie-action');
+
+      if (action === 'accept') {
+        saveConsent({ analytics: true, marketing: true });
+      }
+
+      if (action === 'reject') {
+        saveConsent({ analytics: false, marketing: false });
+      }
+
+      if (action === 'settings') {
+        if (settings) {
+          settings.hidden = false;
+          settings.removeAttribute('hidden');
+        }
+        if (settingsButton) {
+          settingsButton.hidden = true;
+          settingsButton.setAttribute('hidden', '');
+        }
+        if (saveButton) {
+          saveButton.hidden = false;
+          saveButton.removeAttribute('hidden');
+        }
+      }
+
+      if (action === 'save') {
+        saveConsent({
+          analytics: analyticsInput instanceof HTMLInputElement ? analyticsInput.checked : false,
+          marketing: marketingInput instanceof HTMLInputElement ? marketingInput.checked : false
+        });
+      }
+    });
+  })();
+</script>

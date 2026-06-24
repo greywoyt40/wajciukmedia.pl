@@ -1,0 +1,967 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const title = "Jaką szklarnię ogrodową wybrać w 2026? | Wajciuk Media";
+const description =
+  "Praktyczne porównanie szklarni ogrodowych: poliwęglan 4 mm i 6 mm, aluminium, modele przyścienne oraz premium. Wybierz wariant do ogrodu i budżetu.";
+const url = "https://wajciukmedia.pl/szklarnie-ogrodowe/";
+const gtmId = "GTM-KDGXL4D4";
+
+const bloomTarget = "https://www.bloomcabin.com/pl/szklarnie-i-ogrody-zimowe/aluminiowe-szklarnie/aluminium-klasyczna-szklarnia.html";
+
+function bloomcabinUrl(cta: string, segment: string) {
+  const params = new URLSearchParams({
+    awinmid: "119327",
+    awinaffid: "2908593",
+    clickref: "wajciukmedia",
+    clickref2: "google_ads",
+    clickref3: "szklarnie_decision_2026",
+    clickref4: cta,
+    clickref5: segment,
+    clickref6: "test_a",
+    ued: bloomTarget
+  });
+
+  return `https://www.awin1.com/cread.php?${params.toString()}`;
+}
+
+const affiliateLinks = {
+  bloomHero: bloomcabinUrl("hero_cta", "premium_aluminium"),
+  bloomCard: bloomcabinUrl("premium_card", "premium_aluminium"),
+  bloomBottom: bloomcabinUrl("bottom_cta", "premium_aluminium"),
+  zabudowa: "https://webep1.com/go/e148a82867",
+  domodeo: "https://webep1.com/go/6f913cab67"
+};
+
+const routeCards = [
+  {
+    number: "01",
+    label: "Budżet / start",
+    title: "Mała lub średnia szklarnia sezonowa",
+    text: "Dobry wariant, gdy chcesz zacząć od warzyw i sprawdzić, czy szklarnia faktycznie będzie używana. Patrz na wymiary, stabilność i koszt dostawy, nie tylko na zdjęcie.",
+    note: "najniższy próg wejścia",
+    href: affiliateLinks.domodeo,
+    cta: "Sprawdź opcje budżetowe",
+    program: "domodeo24",
+    network: "WebePartners",
+    segment: "budget_middle"
+  },
+  {
+    number: "02",
+    label: "Środek / rozsądny wybór",
+    title: "Solidniejszy model z poliwęglanu",
+    text: "Najlepszy kierunek, gdy szklarnia ma działać przez kilka sezonów. Tu liczy się grubość paneli, fundament, drzwi, wentylacja i odporność konstrukcji.",
+    note: "najlepszy kompromis",
+    href: affiliateLinks.zabudowa,
+    cta: "Sprawdź solidne modele",
+    program: "Zabudowa AGD",
+    network: "WebePartners",
+    segment: "middle_premium"
+  },
+  {
+    number: "03",
+    label: "Premium / przy domu",
+    title: "Estetyczna szklarnia aluminiowa",
+    text: "Dla ogrodu przy domu, tarasu albo miejsca, gdzie konstrukcja ma wyglądać dobrze przez lata. Cena jest wyższa, ale rośnie znaczenie designu, materiału i obsługi.",
+    note: "najlepsze wykończenie",
+    href: affiliateLinks.bloomCard,
+    cta: "Sprawdź premium",
+    program: "Bloomcabin",
+    network: "AWIN",
+    segment: "premium_aluminium"
+  }
+];
+
+const comparison = [
+  ["4 mm poliwęglan", "Tańszy start", "Mała szklarnia, sezonowa uprawa, ostrożny budżet"],
+  ["6 mm poliwęglan", "Lepsza izolacja", "Większy ogród, kilka sezonów, bardziej świadomy zakup"],
+  ["Aluminium premium", "Wygląd i trwałość", "Szklarnia widoczna przy domu, decyzja na lata"],
+  ["Model przyścienny", "Mniej miejsca", "Taras, ściana domu, rośliny blisko wejścia"]
+];
+
+const shopCards = [
+  {
+    label: "Premium przy domu",
+    name: "Bloomcabin",
+    text: "Dobry kierunek, gdy szklarnia ma być widoczna przy domu, tarasie albo reprezentacyjnej części ogrodu. Warto patrzeć na aluminium, wykończenie i sposób dostawy.",
+    href: affiliateLinks.bloomCard,
+    cta: "Zobacz szklarnie premium",
+    program: "Bloomcabin",
+    network: "AWIN",
+    segment: "premium_aluminium",
+    points: ["estetyczny wygląd", "modele premium", "do ogrodu przy domu"]
+  },
+  {
+    label: "Solidne modele ogrodowe",
+    name: "Zabudowa AGD",
+    text: "Dobry punkt startu, gdy szukasz mocniejszej szklarni do uprawy warzyw i chcesz porównać większe konstrukcje, podstawy oraz warianty z poliwęglanem.",
+    href: affiliateLinks.zabudowa,
+    cta: "Zobacz solidne modele",
+    program: "Zabudowa AGD",
+    network: "WebePartners",
+    segment: "middle_premium",
+    points: ["większe konstrukcje", "poliwęglan", "fundament i wentylacja"]
+  },
+  {
+    label: "Tańszy start",
+    name: "domodeo24",
+    text: "Opcja do sprawdzenia, gdy chcesz zacząć od prostszej szklarni albo porównać tańsze warianty przed decyzją o droższym modelu.",
+    href: affiliateLinks.domodeo,
+    cta: "Zobacz tańsze opcje",
+    program: "domodeo24",
+    network: "WebePartners",
+    segment: "budget_middle",
+    points: ["niższy próg wejścia", "prostsze modele", "porównanie cen"]
+  }
+];
+
+const faq = [
+  [
+    "Czy 6 mm zawsze jest lepsze niż 4 mm?",
+    "Nie zawsze. Przy małej szklarni sezonowej 4 mm może wystarczyć. Przy większej konstrukcji i planie używania jej przez kilka lat 6 mm jest bezpieczniejszym kierunkiem."
+  ],
+  [
+    "Czy fundament jest konieczny?",
+    "Przy małej szklarni czasem wystarczy dobre zakotwienie. Przy większym modelu, miękkim gruncie albo wietrznym miejscu fundament lub podstawa są bardzo ważne."
+  ],
+  [
+    "Czy warto kupować premium szklarnię?",
+    "Tak, gdy szklarnia stoi blisko domu i ma być częścią ogrodu. Wtedy liczy się nie tylko uprawa, ale też wygląd, materiał, obsługa i trwałość."
+  ]
+];
+---
+
+<Base {title} {description} {url} {gtmId} enableCookieBanner={true} enableAffiliateTracking={true}>
+  <main class="sz-page">
+    <section class="sz-hero">
+      <div class="sz-shell sz-hero-grid">
+        <div class="sz-hero-copy">
+          <a href="/" class="sz-back">← Wajciuk Media</a>
+          <p class="sz-kicker">Porównanie przed zakupem</p>
+          <h1>Jaką szklarnię ogrodową wybrać w 2026?</h1>
+          <p class="sz-lead">
+            Nie zaczynaj od losowego rankingu. Najpierw wybierz typ decyzji: tani start, solidny model z poliwęglanu albo premium szklarnia przy domu.
+          </p>
+          <div class="sz-hero-actions">
+            <a
+              href={affiliateLinks.bloomHero}
+              target="_blank"
+              rel="sponsored nofollow noopener"
+              class="sz-btn sz-btn-primary"
+              data-affiliate-program="Bloomcabin"
+              data-affiliate-network="AWIN"
+              data-affiliate-cta="hero_cta"
+              data-affiliate-segment="premium_aluminium"
+            >Sprawdź premium szklarnie</a>
+            <a href="#wybor" class="sz-btn sz-btn-secondary">Pomóż mi wybrać</a>
+          </div>
+          <p class="sz-aff-note">
+            Na stronie są linki partnerskie. Po kliknięciu i zakupie u partnera właściciel strony może otrzymać prowizję bez dodatkowego kosztu dla Ciebie.
+          </p>
+        </div>
+
+        <aside class="sz-decision-panel" aria-label="Szybki wybór szklarni">
+          <div class="sz-panel-top">
+            <span>Start</span>
+            <strong>3 ścieżki wyboru</strong>
+          </div>
+          <div class="sz-mini-route">
+            <span>Budżet</span>
+            <div></div>
+            <span>Poliwęglan</span>
+            <div></div>
+            <span>Premium</span>
+          </div>
+          <div class="sz-panel-card sz-panel-card-featured">
+            <span>Szybka decyzja</span>
+            <strong>Jakość przed ceną</strong>
+            <p>Jeśli szklarnia ma stać w ogrodzie przez kilka sezonów, najpierw sprawdź konstrukcję, panele, wentylację i podstawę. Dopiero potem porównuj cenę.</p>
+          </div>
+          <div class="sz-panel-metrics">
+            <div><strong>4–6 mm</strong><span>popularne panele</span></div>
+            <div><strong>premium</strong><span>przy domu</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sz-trust-strip">
+      <div class="sz-shell sz-trust-grid">
+        <div><strong>Mały ogród</strong><span>rozsądny start bez przepłacania</span></div>
+        <div><strong>Warzywnik</strong><span>więcej miejsca i stabilna konstrukcja</span></div>
+        <div><strong>Przy domu</strong><span>estetyka, aluminium i lepsze wykończenie</span></div>
+        <div><strong>Na lata</strong><span>fundament, wentylacja i odporność</span></div>
+      </div>
+    </section>
+
+    <section class="sz-section" id="wybor">
+      <div class="sz-shell">
+        <div class="sz-section-head">
+          <p class="sz-kicker">Najpierw decyzja, potem model</p>
+          <h2>Wybierz sytuację, która najbardziej pasuje do Twojego ogrodu</h2>
+          <p>To nie jest katalog wszystkich szklarni. To szybka ścieżka do wyboru wariantu, który ma sens dla budżetu, miejsca i planu uprawy.</p>
+        </div>
+
+        <div class="sz-route-grid">
+          {routeCards.map((card) => (
+            <article class="sz-route-card">
+              <div class="sz-route-number">{card.number}</div>
+              <span class="sz-route-label">{card.label}</span>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+              <div class="sz-route-note">{card.note}</div>
+              <a
+                href={card.href}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                class="sz-card-link"
+                data-affiliate-program={card.program}
+                data-affiliate-network={card.network}
+                data-affiliate-cta="decision_card"
+                data-affiliate-segment={card.segment}
+              >{card.cta} →</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sz-section sz-section-soft">
+      <div class="sz-shell sz-split">
+        <div>
+          <p class="sz-kicker">4 mm, 6 mm, aluminium</p>
+          <h2>Parametr ma znaczenie dopiero wtedy, gdy wiesz po co kupujesz</h2>
+          <p class="sz-text">
+            Grubość paneli pomaga porównać modele, ale nie zastąpi decyzji o miejscu, stabilności i czasie użytkowania. Najczęstszy błąd to kupić szklarnię tylko dlatego, że na zdjęciu wygląda podobnie do droższej.
+          </p>
+        </div>
+
+        <div class="sz-table-card">
+          {comparison.map(([type, value, useCase]) => (
+            <div class="sz-row">
+              <strong>{type}</strong>
+              <span>{value}</span>
+              <p>{useCase}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sz-section">
+      <div class="sz-shell">
+        <div class="sz-section-head sz-section-head-narrow">
+          <p class="sz-kicker">Gdzie zacząć oglądać</p>
+          <h2>Trzy sensowne kierunki po wstępnym wyborze</h2>
+          <p>Najpierw zdecyduj, czy szukasz prostego startu, solidnej szklarni do uprawy czy estetycznej konstrukcji przy domu. Dopiero potem przechodź do ofert.</p>
+        </div>
+
+        <div class="sz-program-grid">
+          {shopCards.map((card) => (
+            <article class="sz-program-card">
+              <span class="sz-pill">{card.label}</span>
+              <h3>{card.name}</h3>
+              <p>{card.text}</p>
+              <ul class="sz-shop-points">
+                {card.points.map((point) => <li>{point}</li>)}
+              </ul>
+              <a
+                href={card.href}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                class="sz-card-link sz-card-link-light"
+                data-affiliate-program={card.program}
+                data-affiliate-network={card.network}
+                data-affiliate-cta="shop_card"
+                data-affiliate-segment={card.segment}
+              >{card.cta} →</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sz-section sz-section-dark">
+      <div class="sz-shell sz-faq-grid">
+        <div>
+          <p class="sz-kicker">Przed zakupem</p>
+          <h2>Trzy pytania, które warto zadać przed wyborem modelu</h2>
+          <p class="sz-text sz-text-light">Jeżeli odpowiedzi są niejasne, najpierw wróć do porównania. Dobra szklarnia to nie tylko cena i zdjęcie.</p>
+        </div>
+        <div class="sz-faq-list">
+          {faq.map(([question, answer]) => (
+            <details>
+              <summary>{question}</summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sz-final-cta">
+      <div class="sz-shell sz-final-grid">
+        <div>
+          <p class="sz-kicker">Decyzja na start</p>
+          <h2>Zacznij od lepszej konstrukcji, jeżeli szklarnia ma stać przy domu</h2>
+          <p>Przy szklarni widocznej z tarasu lub ogrodu warto dopłacić do materiału, wyglądu i wygody użytkowania. Tani model ma sens głównie wtedy, gdy zaczynasz sezonowo i chcesz ograniczyć ryzyko.</p>
+        </div>
+        <a
+          href={affiliateLinks.bloomBottom}
+          target="_blank"
+          rel="sponsored nofollow noopener"
+          class="sz-btn sz-btn-dark"
+          data-affiliate-program="Bloomcabin"
+          data-affiliate-network="AWIN"
+          data-affiliate-cta="bottom_cta"
+          data-affiliate-segment="premium_aluminium"
+        >Zobacz szklarnie premium</a>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    :global(body) {
+      background: #f4f6ef;
+    }
+
+    .sz-page {
+      min-height: 100vh;
+      background: #f4f6ef;
+      color: #14201a;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .sz-shell {
+      width: min(100% - 32px, 1180px);
+      margin-inline: auto;
+    }
+
+    .sz-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 28px 0 54px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(116, 170, 115, 0.28), transparent 32%),
+        linear-gradient(135deg, #f8f5eb 0%, #eef5e9 52%, #dfe9d8 100%);
+      border-bottom: 1px solid rgba(20, 32, 26, 0.08);
+    }
+
+    .sz-hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -180px;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: rgba(2, 111, 76, 0.1);
+    }
+
+    .sz-hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .sz-back {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(20, 32, 26, 0.12);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.62);
+      color: #244036;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .sz-kicker {
+      margin: 0 0 12px;
+      color: #02734f;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .sz-hero-copy .sz-kicker {
+      margin-top: 48px;
+    }
+
+    .sz-hero h1,
+    .sz-section h2,
+    .sz-final-cta h2 {
+      margin: 0;
+      max-width: 820px;
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #102018;
+    }
+
+    .sz-hero h1 {
+      font-size: clamp(50px, 7.2vw, 92px);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .sz-lead {
+      margin: 22px 0 0;
+      max-width: 640px;
+      color: #405448;
+      font-size: 20px;
+      line-height: 1.65;
+    }
+
+    .sz-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .sz-btn,
+    .sz-card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      border-radius: 999px;
+      padding: 0 22px;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .sz-btn:hover,
+    .sz-card-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .sz-btn-primary {
+      background: #02734f;
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(2, 115, 79, 0.22);
+    }
+
+    .sz-btn-secondary {
+      border: 1px solid rgba(20, 32, 26, 0.16);
+      background: rgba(255, 255, 255, 0.72);
+      color: #14201a;
+    }
+
+    .sz-btn-dark {
+      background: #102018;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .sz-aff-note {
+      margin: 18px 0 0;
+      max-width: 650px;
+      color: #66756c;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .sz-decision-panel {
+      border: 1px solid rgba(20, 32, 26, 0.1);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 28px 80px rgba(27, 54, 38, 0.16);
+      padding: 24px;
+      backdrop-filter: blur(14px);
+    }
+
+    .sz-panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(20, 32, 26, 0.08);
+    }
+
+    .sz-panel-top span,
+    .sz-panel-card span {
+      color: #02734f;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .sz-panel-top strong {
+      font-size: 22px;
+    }
+
+    .sz-mini-route {
+      display: grid;
+      grid-template-columns: auto 1fr auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin: 24px 0;
+    }
+
+    .sz-mini-route span {
+      border-radius: 999px;
+      background: #eff7ec;
+      padding: 8px 10px;
+      color: #244036;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .sz-mini-route div {
+      height: 2px;
+      background: linear-gradient(90deg, #bad9b1, #02734f);
+    }
+
+    .sz-panel-card {
+      border-radius: 26px;
+      background: #102018;
+      color: #fff;
+      padding: 24px;
+    }
+
+    .sz-panel-card strong {
+      display: block;
+      margin-top: 8px;
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .sz-panel-card p {
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.6;
+    }
+
+    .sz-panel-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .sz-panel-metrics div {
+      border-radius: 20px;
+      background: #f7faf5;
+      padding: 18px;
+    }
+
+    .sz-panel-metrics strong {
+      display: block;
+      font-size: 28px;
+      color: #02734f;
+    }
+
+    .sz-panel-metrics span {
+      display: block;
+      margin-top: 3px;
+      color: #607067;
+      font-size: 13px;
+    }
+
+    .sz-trust-strip {
+      background: #102018;
+      color: #fff;
+    }
+
+    .sz-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .sz-trust-grid div {
+      background: #102018;
+      padding: 22px 20px;
+    }
+
+    .sz-trust-grid strong,
+    .sz-trust-grid span {
+      display: block;
+    }
+
+    .sz-trust-grid strong {
+      font-size: 17px;
+    }
+
+    .sz-trust-grid span {
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 13px;
+    }
+
+    .sz-section {
+      padding: 72px 0;
+      background: #fffdf7;
+    }
+
+    .sz-section-soft {
+      background: #edf4e9;
+    }
+
+    .sz-section-dark {
+      background: #102018;
+      color: #fff;
+    }
+
+    .sz-section-dark h2 {
+      color: #fff;
+    }
+
+    .sz-section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .sz-section-head-narrow {
+      max-width: 680px;
+    }
+
+    .sz-section h2,
+    .sz-final-cta h2 {
+      font-size: clamp(38px, 4.5vw, 58px);
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .sz-section-head p:not(.sz-kicker),
+    .sz-text,
+    .sz-final-cta p {
+      margin: 16px 0 0;
+      color: #5f6f65;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .sz-text-light {
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    .sz-route-grid,
+    .sz-program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .sz-route-card,
+    .sz-program-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(20, 32, 26, 0.1);
+      border-radius: 30px;
+      background: #fff;
+      box-shadow: 0 18px 55px rgba(29, 55, 40, 0.08);
+      padding: 26px;
+    }
+
+    .sz-route-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 6px;
+      background: linear-gradient(90deg, #02734f, #b7d38e);
+    }
+
+    .sz-route-number {
+      color: rgba(2, 115, 79, 0.16);
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: 60px;
+      line-height: 1;
+    }
+
+    .sz-route-label,
+    .sz-pill,
+    .sz-route-note {
+      display: inline-flex;
+      border-radius: 999px;
+      background: #eff7ec;
+      padding: 8px 11px;
+      color: #02734f;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sz-route-card h3,
+    .sz-program-card h3 {
+      margin: 18px 0 0;
+      color: #14201a;
+      font-size: 25px;
+      line-height: 1.12;
+    }
+
+    .sz-route-card p,
+    .sz-program-card p {
+      margin: 14px 0 0;
+      color: #617168;
+      line-height: 1.68;
+    }
+
+    .sz-route-note {
+      margin-top: 18px;
+      background: #f7f1df;
+      color: #87620e;
+    }
+
+    .sz-card-link {
+      width: 100%;
+      margin-top: 22px;
+      background: #102018;
+      color: #fff;
+    }
+
+    .sz-card-link-light {
+      background: #02734f;
+    }
+
+    .sz-split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .sz-table-card {
+      overflow: hidden;
+      border: 1px solid rgba(20, 32, 26, 0.1);
+      border-radius: 30px;
+      background: #fffdf7;
+      box-shadow: 0 18px 55px rgba(29, 55, 40, 0.08);
+    }
+
+    .sz-row {
+      display: grid;
+      grid-template-columns: 0.9fr 0.72fr 1.25fr;
+      gap: 18px;
+      padding: 22px;
+      border-bottom: 1px solid rgba(20, 32, 26, 0.08);
+      align-items: start;
+    }
+
+    .sz-row:last-child {
+      border-bottom: 0;
+    }
+
+    .sz-row strong {
+      color: #14201a;
+    }
+
+    .sz-row span {
+      color: #02734f;
+      font-weight: 900;
+    }
+
+    .sz-row p {
+      margin: 0;
+      color: #617168;
+      line-height: 1.5;
+    }
+
+    .sz-program-card {
+      background: #102018;
+      color: #fff;
+      box-shadow: 0 18px 55px rgba(16, 32, 24, 0.12);
+    }
+
+    .sz-program-card h3 {
+      color: #fff;
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: 38px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .sz-program-card p {
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    .sz-program-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .sz-program-stats div {
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 16px;
+    }
+
+    .sz-program-stats strong,
+    .sz-program-stats span {
+      display: block;
+    }
+
+    .sz-program-stats strong {
+      color: #b7d38e;
+      font-size: 26px;
+    }
+
+    .sz-program-stats span {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 13px;
+    }
+
+
+
+    .sz-shop-points {
+      display: grid;
+      gap: 9px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sz-shop-points li {
+      position: relative;
+      padding-left: 22px;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.45;
+    }
+
+    .sz-shop-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b7d38e;
+    }
+
+    .sz-faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(360px, 1.15fr);
+      gap: 42px;
+    }
+
+    .sz-faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .sz-faq-list details {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+    }
+
+    .sz-faq-list summary {
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .sz-faq-list p {
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, 0.66);
+      line-height: 1.65;
+    }
+
+    .sz-final-cta {
+      padding: 52px 0;
+      background: #b7d38e;
+      color: #102018;
+    }
+
+    .sz-final-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .sz-final-cta p {
+      max-width: 720px;
+      color: rgba(16, 32, 24, 0.72);
+    }
+
+    @media (max-width: 960px) {
+      .sz-hero-grid,
+      .sz-split,
+      .sz-faq-grid,
+      .sz-final-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sz-route-grid,
+      .sz-program-grid,
+      .sz-trust-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .sz-decision-panel {
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .sz-shell {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .sz-hero {
+        padding-top: 16px;
+      }
+
+      .sz-hero-copy .sz-kicker {
+        margin-top: 34px;
+      }
+
+      .sz-hero h1 {
+        font-size: 48px;
+      }
+
+      .sz-lead {
+        font-size: 17px;
+      }
+
+      .sz-hero-actions,
+      .sz-btn,
+      .sz-card-link {
+        width: 100%;
+      }
+
+      .sz-route-grid,
+      .sz-program-grid,
+      .sz-trust-grid,
+      .sz-panel-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .sz-mini-route {
+        grid-template-columns: 1fr;
+      }
+
+      .sz-mini-route div {
+        display: none;
+      }
+
+      .sz-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .sz-section {
+        padding: 54px 0;
+      }
+    }
+  </style>
+</Base>

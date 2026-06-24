@@ -1,18 +1,26 @@
 ---
 import "../styles/global.css";
+import CookieConsent from "../components/CookieConsent.astro";
+import AffiliateTracking from "../components/AffiliateTracking.astro";
 
 export interface Props {
   title?: string;
   description?: string;
   url?: string;
   noindex?: boolean;
+  gtmId?: string;
+  enableCookieBanner?: boolean;
+  enableAffiliateTracking?: boolean;
 }
 
 const {
   title = "Sergej Wajciuk — Whitehat Lead Generation CPL/CPA",
   description = "Whitehat lead generation: kampanie CPL/CPA, pre-landingi, tracking, YouTube, TikTok i transparentna optymalizacja kosztu leada.",
   url = "https://www.wajciukmedia.pl",
-  noindex = false
+  noindex = false,
+  gtmId,
+  enableCookieBanner = false,
+  enableAffiliateTracking = false
 } = Astro.props;
 
 const canonical = new URL(Astro.url, Astro.site ?? url).toString();
@@ -41,17 +49,36 @@ const ogImage = new URL("/assets/og-wajciukmedia.webp", Astro.site ?? url).toStr
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="verify-admitad" content="912b1a6944" />
-    <!-- Google Tag Manager — zachowany z poprzedniej wersji -->
-    <script is:inline>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','G-Q3N3TKQ3ZZ');
-    </script>
+    {gtmId && (
+      <>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            functionality_storage: 'granted',
+            security_storage: 'granted',
+            wait_for_update: 500
+          });
+          window.dataLayer.push({ event: 'default_consent' });
+        </script>
+        <script is:inline define:vars={{ gtmId }}>
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer',gtmId);
+        </script>
+      </>
+    )}
   </head>
   <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-Q3N3TKQ3ZZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {gtmId && <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>}
     <slot />
+    {enableAffiliateTracking && <AffiliateTracking />}
+    {enableCookieBanner && <CookieConsent />}
   </body>
 </html>
